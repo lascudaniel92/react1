@@ -1,0 +1,41 @@
+:root {
+  --primary-hue: 85;
+  --primary-saturation: 65%;
+  --primary-color: hsl(var(--primary-hue), var(--primary-saturation), 50%);
+  --primary-dark: hsl(var(--primary-hue), var(--primary-saturation), 20%);
+  --primary-light: hsl(var(--primary-hue), var(--primary-saturation), 70%);
+  --light-grey: #dedede;
+  --dark-grey: #bcbcbc;
+
+  --border-radius: 3px;
+}
+
+html {
+  font-size: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.btn {
+  border: 1px solid #999;
+  background-color: var(--light-grey);
+  border-radius: var(--border-radius);
+
+  padding: 0.2em 0.5em;
+}
+
+.btn:focus {
+  background-color: var(--dark-grey);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-dark);
+  color: var(--primary-dark);
+}
+
+.btn-primary:focus {
+  background-color: var(--primary-light);
+}

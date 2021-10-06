@@ -2,23 +2,22 @@ import { useState } from 'react';
 export function TodoItem({ todo }) {
   const [isShown, setIsShown] = useState(false);
 
-  function handleTodoClick(e) {
-    const isTodoChecked = e.target.checked;
-
-    fetch('http://localhost:3001/todos/' + todo.id, {
+  async function changeTodoStatus(e) {
+    await fetch(`http://localhost:3001/todos/${todo.id}`, {
       method: 'PATCH',
-      body: JSON.stringify({
-        completed: isTodoChecked,
-      }),
       headers: {
         'Content-type': 'application/json',
       },
+      body: JSON.stringify({
+        completed: !todo.completed,
+      }),
     });
+    todo.completed = !todo.completed;
   }
 
   return (
-    <p style={{ fontSize: 25, margin: 8 }} key={todo.id}>
-      <input onClick={handleTodoClick} type="checkbox" id={`todo${todo.id}`} defaultChecked={todo.completed} />
+    <p style={{ fontSize: '3em', margin: 8 }} key={todo.id}>
+      <input onClick={changeTodoStatus} type="checkbox" id={`todo${todo.id}`} defaultChecked={todo.completed} />
       <label onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)} htmlFor={`todo${todo.id}`}>
         {todo.title}
       </label>
@@ -34,6 +33,7 @@ export function TodoItem({ todo }) {
           }}
         >
           ID:{todo.id}
+          <button style={{}}>Delete</button>
         </div>
       )}
     </p>

@@ -1,0 +1,56 @@
+.backdrop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal {
+  background-color: #fff;
+  border-radius: var(--border-radius);
+  box-shadow: #000 0 0 10px;
+}
+
+.modal > * {
+  padding: 10px;
+}
+
+.header {
+  position: relative;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.header h2 {
+  margin: 0.1em 0 0;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background-color: var(--light-grey);
+}
+.close-btn:active {
+  background-color: var(--dark-grey);
+}
+
+.footer {
+  border-top: 1px solid var(--light-grey);
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}

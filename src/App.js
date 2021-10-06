@@ -1,6 +1,7 @@
 // import { Parent } from './Communication/Parent';
 // import { Counter } from './Counter/Counter';
-import { TodoList } from './Todos/TodoList';
+import { TodoList } from './Features/Todos/TodoList';
+import './App.css';
 
 function App() {
   // return <Counter what="passengers" />;
