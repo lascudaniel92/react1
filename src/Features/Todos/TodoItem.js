@@ -16,8 +16,15 @@ export function TodoItem({ todo }) {
   }
 
   return (
-    <p style={{ fontSize: '3em', margin: 8 }} key={todo.id}>
-      <input onClick={changeTodoStatus} type="checkbox" id={`todo${todo.id}`} defaultChecked={todo.completed} />
+    <div style={{ fontSize: '3rem' }} key={todo.id}>
+      <input
+        style={{ margin: '0px 3px 0px 0px' }}
+        autoComplete="off"
+        onClick={changeTodoStatus}
+        type="checkbox"
+        id={`todo${todo.id}`}
+        defaultChecked={todo.completed}
+      />
       <label onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)} htmlFor={`todo${todo.id}`}>
         {todo.title}
       </label>
@@ -36,6 +43,6 @@ export function TodoItem({ todo }) {
           <button style={{}}>Delete</button>
         </div>
       )}
-    </p>
+    </div>
   );
 }

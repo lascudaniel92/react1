@@ -13,7 +13,9 @@
 html {
   font-size: 10px;
 }
-
+body {
+  min-width: 310px;
+}
 * {
   box-sizing: border-box;
 }

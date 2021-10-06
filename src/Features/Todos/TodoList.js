@@ -29,6 +29,7 @@ export function TodoList() {
 
     setTodos([...todos, todo]);
     setShowModal(false);
+    e.target.reset();
   }
 
   async function deleteTodo(e) {
@@ -44,7 +45,9 @@ export function TodoList() {
     });
 
     setTodos(todos.filter((todo) => todo.id !== Number(deleteTodo)));
+    e.target.reset();
   }
+
   function getModalFooter() {
     return (
       <>
@@ -57,34 +60,43 @@ export function TodoList() {
       </>
     );
   }
+
   return (
-    <div style={{ margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', maxWidth: 1000 }}>
-      <h1>Todos</h1>
+    <div
+      style={{
+        margin: '0 auto',
+        // display: 'flex',
+        // flexDirection: 'column',
+        // alignItems: 'flex-start',
+        // maxWidth: '100rem',
+        // minWidth: '30rem',
+      }}
+    >
+      <div>
+        <h1 style={{ fontSize: '4rem', margin: 0 }}>Todos</h1>
 
-      <button style={{ fontSize: '2rem' }} onClick={() => setShowModal(true)}>
-        Add Todo
-      </button>
-
+        <button style={{ margin: '10px 0px 10px 0px', fontSize: '2rem' }} onClick={() => setShowModal(true)}>
+          Add Todo
+        </button>
+      </div>
       <div style={{ marginBottom: 25 }}>
         {todos?.map((one) => (
           <TodoItem key={one.id} todo={one} />
         ))}
       </div>
-      <div style={{ width: 600 }}>
-        <form style={{ float: 'left' }} onSubmit={handleAddTodo}>
-          <input style={{ width: 300 }} type="text" name="todotext"></input>
-          <button style={{ color: 'blue', margin: 10, fontSize: '2rem', fontWeight: 700 }}>Add a new todo</button>
+      <div style={{ maxWidth: 1000, display: 'flex', flexDirection: 'column' }}>
+        <form autoComplete="off" style={{}} onSubmit={handleAddTodo}>
+          <input style={{ width: 280, fontSize: '2rem' }} type="text" name="todotext"></input>
+          <button style={{ color: 'green', margin: '1rem', fontSize: '2rem', fontWeight: 700 }}>Add a new Todo</button>
         </form>
-        <form onSubmit={deleteTodo}>
-          <input style={{ width: 300 }} type="text" name="delete"></input>
-          <button style={{ color: 'red', margin: 10, fontSize: '2rem', fontWeight: 700 }}>
-            Delete an old todo by id
-          </button>
+        <form autoComplete="off" style={{}} onSubmit={deleteTodo}>
+          <input style={{ width: 280, fontSize: '2rem' }} type="text" name="delete"></input>
+          <button style={{ color: 'red', margin: '1rem', fontSize: '2rem', fontWeight: 700 }}>Delete Todo by id</button>
         </form>
       </div>
       <Modal title="Test modal" footer={getModalFooter()} show={showModal} onClose={() => setShowModal(false)}>
-        <form id="addTodoForm" onSubmit={handleAddTodo}>
-          <p>What do you want to add to the list</p>
+        <form autoComplete="off" id="addTodoForm" onSubmit={handleAddTodo}>
+          <p>What do you want to add to the list?</p>
           <input type="text" name="todotext" style={{ width: '100%' }} />
         </form>
       </Modal>
