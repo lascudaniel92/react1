@@ -5,6 +5,7 @@ import { TodoItem } from './TodoItem';
 export function TodoList() {
   const [todos, setTodos] = useState(null);
   const [showModal, setShowModal] = useState(null);
+
   useEffect(() => {
     fetch('http://localhost:3001/todos?userId=1')
       .then((res) => res.json())
@@ -77,9 +78,7 @@ export function TodoList() {
         </button>
       </div>
       <div style={{ marginBottom: 25 }}>
-        {todos?.map((one) => (
-          <TodoItem key={one.id} todo={one} />
-        ))}
+        {Array.isArray(todos) && todos.map((one) => <TodoItem key={one.id} todo={one} />)}
       </div>
       <div style={{ maxWidth: 1000, display: 'flex', flexDirection: 'column' }}>
         <form autoComplete="off" style={{}} onSubmit={handleAddTodo}>

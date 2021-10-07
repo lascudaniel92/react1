@@ -1,0 +1,6 @@
+{
+  "/users*": "/600/users$1",
+  "/todos*": "/600/todos$1",
+  "/albums*": "/644/albums$1",
+  "/photos*": "/644/photos$1"
+}

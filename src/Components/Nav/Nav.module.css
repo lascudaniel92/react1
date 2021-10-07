@@ -1,0 +1,31 @@
+.main-menu {
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.main-menu a {
+  text-decoration: none;
+}
+
+.main-menu a:hover {
+  text-decoration: underline;
+}
+
+.logo {
+  font-size: 3rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 2.5rem;
+}
+
+.active {
+  background-color: var(--primary-color);
+}
