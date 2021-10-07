@@ -39,9 +39,6 @@ export function TodoList() {
 
     await fetch('http://localhost:3001/todos/' + deleteTodo, {
       method: 'DELETE',
-      headers: {
-        'Content-type': 'application/json',
-      },
     });
 
     setTodos(todos.filter((todo) => todo.id !== Number(deleteTodo)));
@@ -68,8 +65,8 @@ export function TodoList() {
         // display: 'flex',
         // flexDirection: 'column',
         // alignItems: 'flex-start',
-        // maxWidth: '100rem',
-        // minWidth: '30rem',
+        maxWidth: '100rem',
+        minWidth: '30rem',
       }}
     >
       <div>
