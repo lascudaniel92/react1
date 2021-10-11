@@ -1,28 +1,42 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Modal } from '../../Components/Modal/Modal';
 import { TodoItem } from './TodoItem';
 
 export function TodoList() {
   const [todos, setTodos] = useState(null);
   const [showModal, setShowModal] = useState(null);
+  const accessToken = localStorage.accessToken;
+  const userId = localStorage.userId;
 
   useEffect(() => {
-    fetch('http://localhost:3001/todos?userId=1')
+    return fetch(`http://localhost:3001/todos?userId=${userId}`, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => setTodos(data));
   }, []);
 
+  // getData();
+
   async function handleAddTodo(e) {
     e.preventDefault();
+
     const todotext = e.target.todotext.value;
 
     const todo = await fetch('http://localhost:3001/todos', {
       method: 'POST',
       headers: {
-        'Content-type': 'application/json',
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
       },
       body: JSON.stringify({
-        userId: 1,
+        userId: userId,
         title: todotext,
         completed: false,
       }),
@@ -40,6 +54,11 @@ export function TodoList() {
 
     await fetch('http://localhost:3001/todos/' + deleteTodo, {
       method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
     });
 
     setTodos(todos.filter((todo) => todo.id !== Number(deleteTodo)));

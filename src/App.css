@@ -42,3 +42,11 @@ body {
 .btn-primary:focus {
   background-color: var(--primary-light);
 }
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}

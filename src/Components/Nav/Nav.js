@@ -2,6 +2,8 @@ import { Link, NavLink } from 'react-router-dom';
 import styles from './Nav.module.css';
 
 export function Nav() {
+  // const accessToken = localStorage.accessToken;
+
   return (
     <nav className={styles.nav}>
       <Link to="/" className={styles.logo}>
@@ -26,6 +28,11 @@ export function Nav() {
         <li>
           <NavLink to="/register" activeClassName={styles.active}>
             Register
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/login" activeClassName={styles.active}>
+            Login
           </NavLink>
         </li>
       </ul>

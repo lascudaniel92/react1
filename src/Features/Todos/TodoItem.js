@@ -2,11 +2,15 @@ import { useState } from 'react';
 export function TodoItem({ todo }) {
   const [isShown, setIsShown] = useState(false);
 
+  const accessToken = localStorage.accessToken;
+
   async function changeTodoStatus(e) {
     await fetch(`http://localhost:3001/todos/${todo.id}`, {
       method: 'PATCH',
       headers: {
-        'Content-type': 'application/json',
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
       },
       body: JSON.stringify({
         completed: !todo.completed,
