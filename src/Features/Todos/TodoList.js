@@ -19,7 +19,7 @@ export function TodoList() {
     })
       .then((res) => res.json())
       .then((data) => setTodos(data));
-  }, []);
+  }, [accessToken, userId]);
 
   // getData();
 

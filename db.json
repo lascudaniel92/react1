@@ -4,41 +4,6 @@
       "email": "1234@gmail.com",
       "password": "$2a$10$aqod8Le/f7bwCluP8eDxvO5vE86JsSAa.VkNPc0hIQhyZCrMgBcnS",
       "id": 1
-    },
-    {
-      "email": "12345@gmail.com",
-      "password": "$2a$10$HtJSDvgtfxFg1TowSxlrbu7HboDDMm2d1YhKiuo9j.5BtFWNXpoAy",
-      "id": 2
-    },
-    {
-      "email": "123456@gmail.com",
-      "password": "$2a$10$NL2j5e5s.ntwrgnwzmZ.W.Sawy3mnV7n7v9bmhz.oYk28nJF4/iHi",
-      "id": 3
-    },
-    {
-      "email": "1234567@gmail.com",
-      "password": "$2a$10$7f.i3rbxn7NmQCt5xvOSXewsHvoRaJBvQSHqdlpvkE3RMnwO7VXD2",
-      "id": 4
-    },
-    {
-      "email": "xxxx@gmail.com",
-      "password": "$2a$10$vmjF/dIuBBX511gW96u5zOW5qf48T48prmuVSGLJZALBgdoTsLwwO",
-      "id": 5
-    },
-    {
-      "email": "xxxxxx@gmail.com",
-      "password": "$2a$10$.6lVrcP39eTyKuOkNDkY2.7a4D5T4U2UMOB1J/3DHYs625uWSosXe",
-      "id": 6
-    },
-    {
-      "email": "2312312@gmail.com",
-      "password": "$2a$10$fMrRFvGnO/4PVbR4UzOT9u6aA16OyuZG1r9mI6x6S1P/tUuLPToJS",
-      "id": 7
-    },
-    {
-      "email": "312312312@gmail.com",
-      "password": "$2a$10$VRZSzT8WOxYn3JHqk64ULexWVZxPEWr5FiSmdJFCzOjbuterIx2KK",
-      "id": 8
     }
   ],
   "todos": [
