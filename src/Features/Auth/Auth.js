@@ -137,7 +137,7 @@ export function Auth() {
             <div className="invalid-feedback">{errors['retype-password']}</div>
           </>
         )}
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary" style={{ marginTop: '1rem' }}>
           {isLogin ? 'Login' : 'Register'}
         </button>
       </div>
