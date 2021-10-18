@@ -1,7 +1,18 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
+import { useAuth } from '../../features/Auth/Auth.context';
 import styles from './Nav.module.css';
 
 export function Nav() {
+  const { auth, logout } = useAuth();
+
+  const history = useHistory();
+
+  function handleLogout(e) {
+    e.preventDefault();
+    logout();
+    history.push('/login');
+  }
+
   return (
     <nav className={styles.nav}>
       <Link to="/" className={styles.logo}>
@@ -24,16 +35,36 @@ export function Nav() {
           </NavLink>
         </li>
 
-        <li className={styles['push-right']}>
-          <NavLink to="/login" activeClassName={styles.active}>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/register" activeClassName={styles.active}>
-            Register
-          </NavLink>
-        </li>
+        {!auth?.user && (
+          <>
+            <li className={styles['push-right']}>
+              <NavLink to="/login" activeClassName={styles.active}>
+                Login
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/register" activeClassName={styles.active}>
+                Register
+              </NavLink>
+            </li>
+          </>
+        )}
+
+        {auth?.user && (
+          <>
+            <li className={styles['push-right']}>
+              Welcome,{' '}
+              <NavLink to="/profile" activeClassName={styles.active}>
+                {auth.user.email}
+              </NavLink>
+            </li>
+            <li>
+              <a href="/" onClick={handleLogout}>
+                Logout
+              </a>
+            </li>
+          </>
+        )}
       </ul>
     </nav>
   );

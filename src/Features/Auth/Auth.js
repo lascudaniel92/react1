@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
+import { useAuth } from './Auth.context';
 
 export function Auth() {
   const [values, setValues] = useState({
@@ -17,7 +18,16 @@ export function Auth() {
 
   const [apiError, setApiError] = useState('');
 
+  const { auth, login } = useAuth();
+
+  const history = useHistory();
   const location = useLocation();
+
+  if (auth) {
+    history.push('/');
+    return null;
+  }
+
   let isLogin = false;
   if (location.pathname.includes('login')) {
     isLogin = true;
@@ -36,8 +46,6 @@ export function Auth() {
     // setErrors({ ...errors, [e.target.name]: '' });
   }
 
-  console.log(values, !values.email);
-
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -45,18 +53,28 @@ export function Auth() {
       return;
     }
 
-    const data = await fetch(`http://localhost:3001/${isLogin ? 'login' : 'register'}`, {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: values.email,
-        password: values.password,
-      }),
-    }).then((res) => res.json());
+    const data = await fetch(
+      `http://localhost:3001/${isLogin ? 'login' : 'register'}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: values.email,
+          password: values.password,
+        }),
+      }
+    ).then((res) => res.json());
 
     if (data.accessToken) {
+      login(data);
+      let to = '/';
+      if (location.state?.from) {
+        to = location.state.from.pathname + location.state.from.search;
+      }
+      history.push(to);
+      return null;
     } else {
       setApiError(data);
     }
@@ -137,7 +155,7 @@ export function Auth() {
             <div className="invalid-feedback">{errors['retype-password']}</div>
           </>
         )}
-        <button type="submit" className="btn btn-primary" style={{ marginTop: '1rem' }}>
+        <button type="submit" className="btn btn-primary">
           {isLogin ? 'Login' : 'Register'}
         </button>
       </div>

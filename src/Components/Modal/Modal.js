@@ -1,8 +1,10 @@
 import styles from './Modal.module.css';
-export function Modal({ title, children, footer, show, onClose }) {
+
+export function Modal({ title, footer, show, onClose, children }) {
   if (!show) {
     return null;
   }
+
   return (
     <div className={styles.backdrop}>
       <div className={styles.modal}>

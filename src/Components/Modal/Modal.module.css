@@ -10,7 +10,6 @@
   height: 100vh;
 
   background-color: rgba(0, 0, 0, 0.7);
-  font-size: 2.5rem;
 }
 
 .modal {
@@ -20,7 +19,7 @@
 }
 
 .modal > * {
-  padding: 1rem;
+  padding: 10px;
 }
 
 .header {
@@ -32,6 +31,13 @@
   margin: 0.1em 0 0;
 }
 
+.footer {
+  border-top: 1px solid var(--light-grey);
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
 .close-btn {
   position: absolute;
   top: 0;
@@ -40,19 +46,12 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  font-size: 2.5rem;
 }
 
 .close-btn:hover {
   background-color: var(--light-grey);
 }
+
 .close-btn:active {
   background-color: var(--dark-grey);
-}
-
-.footer {
-  border-top: 0.1rem solid var(--light-grey);
-  display: flex;
-  justify-content: flex-end;
-  gap: 0.5rem;
 }
